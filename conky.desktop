@@ -1,0 +1,14 @@
+[Desktop Entry]
+Name=conky
+Name[en_ZA]=conky
+Name[en_US]=conky
+GenericName=background monitor
+Comment=conky
+Exec=conky -d -c /home/a211278l/.conky/seamod/conkyrc.lua
+Terminal=false
+Hidden=false
+Type=Application
+StartupNotify=false
+X-GNOME-Autostart-enabled=true
+X-GNOME-Autostart-Phase=Application
+X-GNOME-Autostart-Delay=5

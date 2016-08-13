@@ -1,0 +1,24 @@
+#!/bin/sh
+# force conky to reload when networks change
+WIRED='eth0'
+WIRELESS='wlan0'
+
+conky_pid=`pgrep -x conky | head -n 1`
+# skip if conky is not running
+if [ -z "$conky_pid" ]; then
+  exit
+fi
+
+conky_cmd=`ps --no-headers -o cmd -q $conky_pid`
+conky_x_display=`cat /proc/$conky_pid/environ | xargs -0 | grep -o -E 'DISPLAY=[0-9:.]+'`
+conky_user=`ps --no-headers -o euser -q $conky_pid`
+
+if [ "$1" = "$WIRLESS" ] || [ "$1" = "$WIRED" ]; then
+  case $2 in
+    up|down)
+      logger "restarting conky[$conky_pid]"
+      kill $conky_pid
+      su $conky_user -c "bash -c \"$conky_x_display $conky_cmd\""
+      ;;
+  esac
+fi
