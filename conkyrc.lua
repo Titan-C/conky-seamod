@@ -75,7 +75,7 @@ ${offset 145}${cpugraph cpu0 30,200 666666 666666}
 ${voffset -32}
 ${offset 91}${font Ubuntu:size=11:style=bold}${color5}PROC
 # Showing TOP 5 CPU-consumers
-${offset 110}${font Ubuntu:size=12:style=normal}${color4}${top name 1}${alignr}${top cpu 1}%
+${offset 110}${font Ubuntu:size=11:style=normal}${color4}${top name 1}${alignr}${top cpu 1}%
 ${offset 110}${font Ubuntu:size=11:style=normal}${color1}${top name 2}${alignr}${top cpu 2}%
 ${offset 110}${font Ubuntu:size=10:style=normal}${color2}${top name 3}${alignr}${top cpu 3}%
 ${offset 110}${font Ubuntu:size=10:style=normal}${color3}${top name 4}${alignr}${top cpu 4}%
@@ -98,8 +98,8 @@ ${offset 110}${font Ubuntu:size=10:style=normal}${color3}${top_mem name 4}${alig
 
 # Showing disk partitions: root, home and files
 
-${offset 180}${color1}${font Ubuntu:size=10:style=bold}Disk Read: ${alignr}${font Ubuntu:size=10:style=normal}${color2}${diskio_read}
-${offset 180}${color1}${font Ubuntu:size=10:style=bold}Disk Write: ${alignr}${font Ubuntu:size=10:style=normal}${color2}${diskio_write}
+${offset 180}${color1}${font Ubuntu:size=10:style=bold}Read: ${alignr}${font Ubuntu:size=10:style=normal}${color2}${diskio_read}
+${offset 180}${color1}${font Ubuntu:size=10:style=bold}Write: ${alignr}${font Ubuntu:size=10:style=normal}${color2}${diskio_write}
 ${offset 145}${diskiograph 30,200 666666 666666}
 ${voffset -32}
 ${offset 85}${font Ubuntu:size=11:style=bold}${color5}STORE
@@ -113,21 +113,31 @@ ${offset 110}${font Ubuntu:size=10:style=normal}${color2}${top_mem name 3}${alig
 # Network data (assumes wireless info). NET ring is mostly useless but looks pretty, main info is in the graphs
 #${if_up eth0}
 ${if_match "${addr eth0}" != "No Address"}\
-        
-${offset 180}${font Ubuntu:size=10:style=bold}${color1}Wired: ${alignr}${color3}${addr eth0}
-${offset 180}${font Ubuntu:size=10:style=bold}${color1}Public: ${alignr}${color3}${curl http://api.ipify.org 300}
+${offset 180}${font Ubuntu:size=10:style=bold}${color1}Wired
+${offset 180}${font Ubuntu:size=10:style=bold}${color1}IP: ${alignr}${font Ubuntu:size=10:style=normal}${color2}${addr eth0}
+${offset 180}${font Ubuntu:size=10:style=bold}${color1}Public IP: ${alignr}${font Ubuntu:size=10:style=normal}${color2}${curl http://api.ipify.org 300}
 ${offset 145}${upspeedgraph eth0 25,200 4B1B0C FF5C2B 1280KiB -l}
 ${offset 145}${color1}${font Ubuntu:size=10:style=bold}Up: ${alignr}${font Ubuntu:size=10:style=normal}${color3}${upspeed eth0} / ${totalup eth0}
 ${offset 145}${downspeedgraph eth0 25,200 324D23 77B753 1280KiB -l}
 ${offset 145}${color1}${font Ubuntu:size=10:style=bold}Down: ${alignr}${font Ubuntu:size=10:style=normal}${color3}${downspeed eth0} / ${totaldown eth0}
 ${else}\
-${offset 180}${font Ubuntu:size=10:style=bold}${color1}SSID: ${alignr}${color3}${wireless_essid}
-${offset 180}${font Ubuntu:size=10:style=bold}${color1}Wifi: ${alignr}${color3}${addr wlan0}
-${offset 180}${font Ubuntu:size=10:style=bold}${color1}Public: ${alignr}${color3}${curl http://api.ipify.org 300}
+${if_match "${addr wlan0}" != "No Address"}\
+${offset 180}${font Ubuntu:size=10:style=bold}${color1}Wifi: ${alignr}${font Ubuntu:size=10:style=normal}${color2}${wireless_essid} (${wireless_bitrate wlan0})
+${offset 180}${font Ubuntu:size=10:style=bold}${color1}IP: ${alignr}${font Ubuntu:size=10:style=normal}${color2}${addr wlan0}
+${offset 180}${font Ubuntu:size=10:style=bold}${color1}Public IP: ${alignr}${font Ubuntu:size=10:style=normal}${color2}${curl http://api.ipify.org 300}
 ${offset 145}${upspeedgraph wlan0 25,200 4B1B0C FF5C2B 1280KiB -l}
 ${offset 145}${color1}${font Ubuntu:size=10:style=bold}Up: ${alignr}${font Ubuntu:size=10:style=normal}${color3}${upspeed wlan0} / ${totalup wlan0}
 ${offset 145}${downspeedgraph wlan0 25,200 324D23 77B753 1280KiB -l}
 ${offset 145}${color1}${font Ubuntu:size=10:style=bold}Down: ${alignr}${font Ubuntu:size=10:style=normal}${color3}${downspeed wlan0} / ${totaldown wlan0}
+${else}\
+
+${offset 180}${font Ubuntu:size=10:style=bold}${color1}Disconnected
+${offset 180}${font Ubuntu:size=10:style=normal}${color3}(eth0 and wlan0 have no IP)
+${offset 145}${upspeedgraph eth0 25,200 4B1B0C FF5C2B 1280KiB -l}
+${offset 145}${color1}${font Ubuntu:size=10:style=bold}Up: ${alignr}${font Ubuntu:size=10:style=normal}${color3}NA
+${offset 145}${downspeedgraph eth0 25,200 324D23 77B753 1280KiB -l}
+${offset 145}${color1}${font Ubuntu:size=10:style=bold}Down: ${alignr}${font Ubuntu:size=10:style=normal}${color3}NA
+${endif}\
 ${endif}\
 ${voffset -100}
 ${offset 105}${font Ubuntu:size=11:style=bold}${color5}NET
@@ -141,5 +151,5 @@ ${offset 15}${font Ubuntu:size=11:style=normal}${color1}Uptime:${tab}${tab}${col
 
 # Log feed
 ${offset 15}${font Ubuntu:size=11:style=normal}${color1}Syslog Err:
-${voffset 3}${color3}${font Ubuntu Condensed:size=8:style=normal}${texecpi 60 ~/.conky/seamod/conky-syslog-err-feed.sh }
+${voffset 3}${color3}${font Ubuntu Condensed:size=8:style=normal}${texecpi 60 ~/.conky/seamod/syslog-err-feed.sh }
 ]];

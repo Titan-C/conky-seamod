@@ -303,8 +303,8 @@ gauge = {
 },
 -- Network rings
 {
-    --conky_line='${if_up eth0}${downspeedf eth0}${else}${downspeedf wlan0}${endif}',
-    conky_line='${if_match "${addr eth0}" != "No Address"}${downspeedf eth0}${else}${downspeedf wlan0}${endif}',
+    --conky_line='${if_up eth0}${downspeedf eth0}${else}${if_up wlan0}{downspeedf wlan0}${endif}${endif}',
+    conky_line='${if_match "${addr eth0}" != "No Address"}${downspeedf eth0}${else}${if_match "${addr wlan0}" != "No Address"}${downspeedf wlan0}${endif}${endif}',
     name='downspeedf',             arg='eth0',                  max_value=100,
     x=70,                          y=644,
     graph_radius=60,
@@ -326,8 +326,8 @@ gauge = {
     caption_fg_colour=0xFFFFFF,    caption_fg_alpha=0.5,
 },
 {
-    --conky_line='${if_up eth0}${upspeedf eth0}${else}${upspeedf wlan0}${endif}',
-    conky_line='${if_match "${addr eth0}" != "No Address"}${upspeedf eth0}${else}${upspeedf wlan0}${endif}',
+    --conky_line='${if_up eth0}${upspeedf eth0}${else}${if_up wlan0}${upspeedf wlan0}${endif}${endif}',
+    conky_line='${if_match "${addr eth0}" != "No Address"}${upspeedf eth0}${else}${if_match "${addr wlan0}" != "No Address"}{upspeedf wlan0}${endif}${endif}',
     name='upspeedf',               arg='eth0',                  max_value=100,
     x=70,                          y=644,
     graph_radius=48,
@@ -349,6 +349,7 @@ gauge = {
     caption_fg_colour=0xFFFFFF,    caption_fg_alpha=0.5,
 },
 {
+    conky_line='${if_match "${addr wlan0}" != "No Address"}${wireless_link_qual_perc wlan0}${else}0${endif}',
     name='wireless_link_qual_perc', arg='wlan0',                max_value=100,
     x=70,                          y=644,
     graph_radius=30,
