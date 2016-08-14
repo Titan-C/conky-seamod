@@ -327,7 +327,7 @@ gauge = {
 },
 {
     --conky_line='${if_up eth0}${upspeedf eth0}${else}${upspeedf wlan0}${endif}',
-    conky_line='${if_match "${addr eth0}" != "No Address"}${downspeedf eth0}${else}${downspeedf wlan0}${endif}',
+    conky_line='${if_match "${addr eth0}" != "No Address"}${upspeedf eth0}${else}${upspeedf wlan0}${endif}',
     name='upspeedf',               arg='eth0',                  max_value=100,
     x=70,                          y=644,
     graph_radius=48,
