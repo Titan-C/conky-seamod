@@ -114,20 +114,20 @@ ${offset 110}${font Ubuntu:size=10:style=normal}${color2}${top_mem name 3}${alig
 #${if_up eth0}
 ${if_match "${addr eth0}" != "No Address"}\
         
-${offset 180}${font Ubuntu:size=10:style=bold}${color1}Wired IP: ${alignr}$color3${addr eth0}
-${offset 180}${font Ubuntu:size=10:style=bold}${color1}Public IP: ${alignr}$color3${execi 3600 wget -q -O /dev/stdout http://checkip.dyndns.org/ | cut -d : -f 2- | cut -d \< -f -1}
+${offset 180}${font Ubuntu:size=10:style=bold}${color1}Wired: ${alignr}${color3}${addr eth0}
+${offset 180}${font Ubuntu:size=10:style=bold}${color1}Public: ${alignr}${color3}${curl http://api.ipify.org 300}
 ${offset 145}${upspeedgraph eth0 25,200 4B1B0C FF5C2B 1280KiB -l}
-${offset 145}${color1}${font Ubuntu:size=10:style=bold}Up: ${alignr}${font Ubuntu:size=10:style=normal}$color2${upspeed eth0} / ${totalup eth0}
+${offset 145}${color1}${font Ubuntu:size=10:style=bold}Up: ${alignr}${font Ubuntu:size=10:style=normal}${color3}${upspeed eth0} / ${totalup eth0}
 ${offset 145}${downspeedgraph eth0 25,200 324D23 77B753 1280KiB -l}
-${offset 145}${color1}${font Ubuntu:size=10:style=bold}Down: ${alignr}${font Ubuntu:size=10:style=normal}$color2${downspeed eth0} / ${totaldown eth0}
+${offset 145}${color1}${font Ubuntu:size=10:style=bold}Down: ${alignr}${font Ubuntu:size=10:style=normal}${color3}${downspeed eth0} / ${totaldown eth0}
 ${else}\
-${offset 180}${font Ubuntu:size=10:style=bold}${color1}SSID: ${alignr}$color3${wireless_essid}
-${offset 180}${font Ubuntu:size=10:style=bold}${color1}Wifi IP: ${alignr}$color3${addr wlan0}
-${offset 180}${font Ubuntu:size=10:style=bold}${color1}Public IP: ${alignr}$color3${execi 3600 wget -q -O /dev/stdout http://checkip.dyndns.org/ | cut -d : -f 2- | cut -d \< -f -1}
+${offset 180}${font Ubuntu:size=10:style=bold}${color1}SSID: ${alignr}${color3}${wireless_essid}
+${offset 180}${font Ubuntu:size=10:style=bold}${color1}Wifi: ${alignr}${color3}${addr wlan0}
+${offset 180}${font Ubuntu:size=10:style=bold}${color1}Public: ${alignr}${color3}${curl http://api.ipify.org 300}
 ${offset 145}${upspeedgraph wlan0 25,200 4B1B0C FF5C2B 1280KiB -l}
-${offset 145}${color1}${font Ubuntu:size=10:style=bold}Up: ${alignr}${font Ubuntu:size=10:style=normal}$color2${upspeed wlan0} / ${totalup wlan0}
+${offset 145}${color1}${font Ubuntu:size=10:style=bold}Up: ${alignr}${font Ubuntu:size=10:style=normal}${color3}${upspeed wlan0} / ${totalup wlan0}
 ${offset 145}${downspeedgraph wlan0 25,200 324D23 77B753 1280KiB -l}
-${offset 145}${color1}${font Ubuntu:size=10:style=bold}Down: ${alignr}${font Ubuntu:size=10:style=normal}$color2${downspeed wlan0} / ${totaldown wlan0}
+${offset 145}${color1}${font Ubuntu:size=10:style=bold}Down: ${alignr}${font Ubuntu:size=10:style=normal}${color3}${downspeed wlan0} / ${totaldown wlan0}
 ${endif}\
 ${voffset -100}
 ${offset 105}${font Ubuntu:size=11:style=bold}${color5}NET
