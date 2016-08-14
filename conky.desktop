@@ -1,10 +1,8 @@
 [Desktop Entry]
 Name=conky
-Name[en_ZA]=conky
-Name[en_US]=conky
-GenericName=background monitor
+GenericName=desktop background system monitor
 Comment=conky
-Exec=conky -d -c /home/a211278l/.conky/seamod/conkyrc.lua
+Exec=conky -q -d -c "$HOME/.conky/seamod/conkyrc.lua"
 Terminal=false
 Hidden=false
 Type=Application
