@@ -21,7 +21,7 @@ Seamod theme was built by SeaJey. Maxiwell modified the original theme for conky
 
 Fixes
 * `border_outer_margin` can be adjusted without breaking the alignment of rings.
-* now runs on Ubuntu 16.04 LTS with Gnome 3.18
+* now runs on Ubuntu 16.04 LTS with Gnome 3.18 using `dock` or `normal` window type and hints.
 
 Changes/enhancements
 * gracefully accommodates switching between wired and wireless. NET section shows info for wired (eth0) else wireless (wlan0) info is shown.
@@ -35,12 +35,13 @@ Changes/enhancements
 
 # Install and run
 
-Install (should work in Gnome 3 at least)
+Install within your home dir (should work in Gnome 3 at least)
 ```bash
+sudo apt-get install conky-all
 mkdir -p ~/.conky/seamod
 git clone --depth=1 https://github.com/JPvRiel/conky-seamod ~/.conky/seamod
 cp ~/.conky/seamod/conky.desktop ~/.config/autostart/
-ln -s .conky/seamod/conkyrc.lua .conkyrc
+ln -s ~/.conky/seamod/conkyrc.lua ~/.conkyrc
 ```
 
 Start (ad-hoc in shell, useful for debugging)
@@ -60,7 +61,9 @@ Hints
 
 # Modifying
 
-Alignment between rings and text is painfully brittle. Herewith, the most likely changes that are typically needed.
+Hardware such as number of CPU cores, the place to get temperatures and even the way in which network devices are named varies, so at least one or two modificaitons will likely be needed. Herewith, the most likely changes that are typically needed.
+
+
 
 Modify CPU rings in `seamod_rings.lua`'s `gauge` data structure list.
 * Change the number of 'cpu' items  match the output of the `nproc` command. Simply comment out or remove `cpu` items in the list. Default is 8 'CPU' instances (cores and hyper threads).
@@ -74,9 +77,11 @@ E.g. fix.
 ```
 sed -i -e 's/eth0/eth1/g' ~/.conky/seamod/conkyrc.lua  ~/.conky/seamod/seamod_rings.lua
 ```
+CPU and fan temperature uses the `hwmon` conky variable. You'll need to find your hardware specific path and inputs somewhere in `/sys/class/hwmon/*`. Sadly, some systems might not consistently use hwmon1 vs hwmon0 between boots.
 
-Best place to add own text or info is under `# Extra info`
-* E.g. Entropy pool bar for crypto nerds may be arb and can be removed.
+*N.B!* Alignment between rings and the text is painfully brittle. So avoid changing the number of lines in the text section that algin next to rings. Best place to add own text or info is under `# Extra info`. And to make room, you can remove some lines. E.g. 
+* Entropy pool bar for crypto nerds may be arb and can be removed. Delete line with `entropy_bar` etc.
+* You might prefer not to see how often errors and warnings are spat out by syslog. Delete line with `{texecpi 60 ~/.conky/seamod/syslog-err-feed.sh}`
 
 Ring/gauge sections
 * In `conkyrc.lua`
@@ -96,7 +101,8 @@ Conky's `if_up` object triggers a seemingly benign stream of `SIOCGIFADDR: Canno
 ## Multiple screens
 
 Conky always displays on the rightmost screen's edge, given many desktops and graphics drivers setup the display as one large X screen and resolution.
-* Example issue [here](https://github.com/brndnmtthws/conky/issues/249)
+* The `xinerama_head` option is supposed to help pin/dock the window to the first screen, but requires a very recent version of conkey (and Ubuntu 16.04 LTS only packaged v1.10.1 without the fix) 
+* Example issue [here](https://github.com/brndnmtthws/conky/issues/249) and [here](https://github.com/brndnmtthws/conky/issues/172).
 
 
 # Related Work

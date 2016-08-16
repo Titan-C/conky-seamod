@@ -22,7 +22,9 @@ conky.config = {
 
        	own_window = true,
         own_window_class = 'conky-semi',
+        --own_window_type = 'override',
         --own_window_type = 'desktop',
+        own_window_type = 'dock',
         own_window_hints = 'undecorated,sticky,skip_taskbar,skip_pager,below',
         
         own_window_colour = '#000000',
@@ -42,6 +44,7 @@ conky.config = {
 	maximum_width = 360,
         border_inner_margin = 0,
 	border_outer_margin = 20,
+        xinerama_head = 0,
 
 	override_utf8_locale = true,
 	use_xft = true,
@@ -93,7 +96,7 @@ ${offset 110}${font Ubuntu:size=12:style=normal}${color4}${top_mem name 1}${alig
 ${offset 110}${font Ubuntu:size=11:style=normal}${color1}${top_mem name 2}${alignr}${top_mem mem_res 2}
 ${offset 110}${font Ubuntu:size=10:style=normal}${color2}${top_mem name 3}${alignr}${top_mem mem_res 3}
 ${offset 110}${font Ubuntu:size=10:style=normal}${color3}${top_mem name 4}${alignr}${top_mem mem_res 4}
-${offset 110}${font Ubuntu:size=10:style=normal}${color3}${top_mem name 4}${alignr}${top_mem mem_res 5}
+${offset 110}${font Ubuntu:size=10:style=normal}${color3}${top_mem name 5}${alignr}${top_mem mem_res 5}
 
 
 # Showing disk partitions: root, home and files
@@ -103,11 +106,11 @@ ${offset 180}${color1}${font Ubuntu:size=10:style=bold}Write: ${alignr}${font Ub
 ${offset 145}${diskiograph 30,200 666666 666666}
 ${voffset -32}
 ${offset 85}${font Ubuntu:size=11:style=bold}${color5}STORE
-${offset 110}${font Ubuntu:size=12:style=normal}${color4}${top_mem name 1}${alignr}${top_io io_perc 1}%
-${offset 110}${font Ubuntu:size=11:style=normal}${color1}${top_mem name 2}${alignr}${top_io io_perc 2}%
-${offset 110}${font Ubuntu:size=10:style=normal}${color2}${top_mem name 3}${alignr}${top_io io_perc 3}%
-${offset 110}${font Ubuntu:size=10:style=normal}${color2}${top_mem name 3}${alignr}${top_io io_perc 4}%
-${offset 110}${font Ubuntu:size=10:style=normal}${color2}${top_mem name 3}${alignr}${top_io io_perc 5}%
+${offset 110}${font Ubuntu:size=12:style=normal}${color4}${top_mem name 1}${alignr}r:${top_io io_read 1}w:${top_io io_write 1}
+${offset 110}${font Ubuntu:size=11:style=normal}${color1}${top_mem name 2}${alignr}r:${top_io io_read 2}w:${top_io io_write 2}
+${offset 110}${font Ubuntu:size=10:style=normal}${color2}${top_mem name 3}${alignr}r:${top_io io_read 3}w:${top_io io_write 3}
+${offset 110}${font Ubuntu:size=10:style=normal}${color2}${top_mem name 4}${alignr}r:${top_io io_read 4}w:${top_io io_write 4}
+${offset 110}${font Ubuntu:size=10:style=normal}${color2}${top_mem name 5}${alignr}r:${top_io io_read 5}w:${top_io io_write 5}
 
 
 # Network data (assumes wireless info). NET ring is mostly useless but looks pretty, main info is in the graphs
@@ -145,8 +148,8 @@ ${offset 105}${font Ubuntu:size=11:style=bold}${color5}NET
 #### Modifications below HERE wont cause alignment problems with the gauges/rings ####
 # Extra info
 ${voffset 60}
-${offset 15}${font Ubuntu:size=11:style=normal}${color1}Entropy:${tab}${color3}${entropy_bar 5,150}  ${color3}${entropy_perc}% (${entropy_avail}/${entropy_poolsize})
-${offset 15}${font Ubuntu:size=11:style=normal}${color1}Battery:${tab}${color3}${battery_bar 5,150}  ${if_match ${battery_percent BAT0} <= 33}${color4}${else}${color3}${endif}${battery_percent}% (${battery_short})
+${offset 15}${font Ubuntu:size=11:style=normal}${color1}Entropy:${tab}${color3}${entropy_bar 5,140}  ${color3}${entropy_perc}% (${entropy_avail}/${entropy_poolsize})
+${offset 15}${font Ubuntu:size=11:style=normal}${color1}Battery:${tab}${color3}${battery_bar 5,140}  ${if_match ${battery_percent BAT0} <= 33}${color4}${else}${color3}${endif}${battery_short}${if_match ${battery_percent BAT0} != 100} (${battery_time})${endif}
 ${offset 15}${font Ubuntu:size=11:style=normal}${color1}Uptime:${tab}${tab}${color3}$uptime
 
 # Log feed

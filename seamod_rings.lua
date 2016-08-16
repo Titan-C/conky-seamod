@@ -196,7 +196,7 @@ gauge = {
 -- Memory rings
 {
     name='memperc',                arg='',                      max_value=100,
-    x=70,                          y=263,
+    x=70,                          y=262,
     graph_radius=60,
     graph_thickness=10,
     graph_start_angle=180,
@@ -217,7 +217,7 @@ gauge = {
 },
 {
     name='swapperc',               arg='',                      max_value=100,
-    x=70,                          y=263,
+    x=70,                          y=262,
     graph_radius=45,
     graph_thickness=10,
     graph_start_angle=180,
@@ -239,7 +239,7 @@ gauge = {
 -- Storage rings
 {
     name='fs_used_perc',           arg='/home',                 max_value=100,
-    x=70,                          y=457,
+    x=70,                          y=455,
     graph_radius=60,
     graph_thickness=8,
     graph_start_angle=180,
@@ -261,7 +261,7 @@ gauge = {
 {
     name='fs_used_perc',           arg='/',
     max_value=100,
-    x=70,                          y=457,
+    x=70,                          y=455,
     graph_radius=48,
     graph_thickness=8,
     graph_start_angle=180,
@@ -282,7 +282,7 @@ gauge = {
 },
 {
     name='fs_used_perc',           arg='/var',                  max_value=100,
-    x=70,                          y=457,
+    x=70,                          y=455,
     graph_radius=36,
     graph_thickness=8,
     graph_start_angle=180,
@@ -306,7 +306,7 @@ gauge = {
     --conky_line='${if_up eth0}${downspeedf eth0}${else}${if_up wlan0}{downspeedf wlan0}${endif}${endif}',
     conky_line='${if_match "${addr eth0}" != "No Address"}${downspeedf eth0}${else}${if_match "${addr wlan0}" != "No Address"}${downspeedf wlan0}${endif}${endif}',
     name='downspeedf',             arg='eth0',                  max_value=100,
-    x=70,                          y=644,
+    x=70,                          y=642,
     graph_radius=60,
     graph_thickness=8,
     graph_start_angle=180,
@@ -329,7 +329,7 @@ gauge = {
     --conky_line='${if_up eth0}${upspeedf eth0}${else}${if_up wlan0}${upspeedf wlan0}${endif}${endif}',
     conky_line='${if_match "${addr eth0}" != "No Address"}${upspeedf eth0}${else}${if_match "${addr wlan0}" != "No Address"}${upspeedf wlan0}${endif}${endif}',
     name='upspeedf',               arg='eth0',                  max_value=100,
-    x=70,                          y=644,
+    x=70,                          y=642,
     graph_radius=48,
     graph_thickness=8,
     graph_start_angle=180,
@@ -351,7 +351,7 @@ gauge = {
 {
     conky_line='${if_match "${addr wlan0}" != "No Address"}${wireless_link_qual_perc wlan0}${else}0${endif}',
     name='wireless_link_qual_perc', arg='wlan0',                max_value=100,
-    x=70,                          y=644,
+    x=70,                          y=642,
     graph_radius=30,
     graph_thickness=8,
     graph_start_angle=180,
