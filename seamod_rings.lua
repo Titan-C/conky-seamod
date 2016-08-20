@@ -16,7 +16,7 @@ require 'cairo'
 
 
 gauge = {
-    
+
 --====--
 -- Data here is loaded only once when included and is therefore static
 -- 'name' and 'arg' for simple conky objects with static arguments
@@ -109,6 +109,7 @@ gauge = {
     caption_weight=0.8,            caption_size=9.0,
     caption_fg_colour=0xFFFFFF,    caption_fg_alpha=0.3,
 },
+--[[
 {
     name='cpu',                    arg='cpu5',                  max_value=100,
     x=70,                          y=70,
@@ -193,6 +194,7 @@ gauge = {
     caption_weight=0.8,            caption_size=9.0,
     caption_fg_colour=0xFFFFFF,    caption_fg_alpha=0.3,
 },
+--]]
 -- Memory rings
 {
     name='memperc',                arg='',                      max_value=100,
@@ -303,9 +305,9 @@ gauge = {
 },
 -- Network rings
 {
-    --conky_line='${if_up eth0}${downspeedf eth0}${else}${if_up wlan0}{downspeedf wlan0}${endif}${endif}',
-    conky_line='${if_match "${addr eth0}" != "No Address"}${downspeedf eth0}${else}${if_match "${addr wlan0}" != "No Address"}${downspeedf wlan0}${endif}${endif}',
-    name='downspeedf',             arg='eth0',                  max_value=100,
+    --conky_line='${if_up enp1s0f1}${downspeedf enp1s0f1}${else}${if_up wlan0}{downspeedf wlan0}${endif}${endif}',
+    conky_line='${if_match "${addr enp1s0f1}" != "No Address"}${downspeedf enp1s0f1}${else}${if_match "${addr wlan0}" != "No Address"}${downspeedf wlan0}${endif}${endif}',
+    name='downspeedf',             arg='enp1s0f1',                  max_value=100,
     x=70,                          y=642,
     graph_radius=60,
     graph_thickness=8,
@@ -326,9 +328,9 @@ gauge = {
     caption_fg_colour=0xFFFFFF,    caption_fg_alpha=0.5,
 },
 {
-    --conky_line='${if_up eth0}${upspeedf eth0}${else}${if_up wlan0}${upspeedf wlan0}${endif}${endif}',
-    conky_line='${if_match "${addr eth0}" != "No Address"}${upspeedf eth0}${else}${if_match "${addr wlan0}" != "No Address"}${upspeedf wlan0}${endif}${endif}',
-    name='upspeedf',               arg='eth0',                  max_value=100,
+    --conky_line='${if_up enp1s0f1}${upspeedf enp1s0f1}${else}${if_up wlan0}${upspeedf wlan0}${endif}${endif}',
+    conky_line='${if_match "${addr enp1s0f1}" != "No Address"}${upspeedf enp1s0f1}${else}${if_match "${addr wlan0}" != "No Address"}${upspeedf wlan0}${endif}${endif}',
+    name='upspeedf',               arg='enp1s0f1',                  max_value=100,
     x=70,                          y=642,
     graph_radius=48,
     graph_thickness=8,
@@ -497,11 +499,11 @@ function go_gauge_rings(display, border)
         end
         draw_gauge_ring(display, data, value, border)
     end
-    
+
     for i in pairs(gauge) do
         load_gauge_rings(display, gauge[i])
     end
-    
+
 end
 
 
@@ -511,7 +513,7 @@ function conky_main()
     if conky_window == nil then
         return
     end
-    
+
     local cs = cairo_xlib_surface_create(conky_window.display, conky_window.drawable, conky_window.visual, conky_window.width, conky_window.height)
     local display = cairo_create(cs)
 
