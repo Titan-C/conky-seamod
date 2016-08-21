@@ -36,9 +36,9 @@ conky.config = {
     draw_borders = false,
     draw_graph_borders = false,
 
-    alignment = 'top_left',
+    alignment = 'middle_left',
     gap_x = 30,
-    gap_y = 30,
+    gap_y = 0,
     minimum_width = 340, minimum_height = 600,
     maximum_width = 360,
     border_inner_margin = 0,
@@ -131,18 +131,18 @@ ${offset 145}${color1}${font Ubuntu:size=10:style=bold}Up: ${alignr}${font Ubunt
 ${offset 145}${downspeedgraph enp1s0f1 25,200 324D23 77B753 4280KiB -l}
 ${offset 145}${color1}${font Ubuntu:size=10:style=bold}Down: ${alignr}${font Ubuntu:size=10:style=normal}${color3}${downspeed enp1s0f1} / ${totaldown enp1s0f1}
 ${else}\
-${if_match "${addr wlan0}" != "No Address"}\
-${offset 180}${font Ubuntu:size=10:style=bold}${color1}Wifi: ${alignr}${font Ubuntu:size=10:style=normal}${color2}${wireless_essid} (${wireless_bitrate wlan0})
-${offset 180}${font Ubuntu:size=10:style=bold}${color1}IP: ${alignr}${font Ubuntu:size=10:style=normal}${color2}${addr wlan0}
+${if_match "${addr wlp2s0}" != "No Address"}\
+${offset 180}${font Ubuntu:size=10:style=bold}${color1}Wifi: ${alignr}${font Ubuntu:size=10:style=normal}${color2}${wireless_essid} (${wireless_bitrate wlp2s0})
+${offset 180}${font Ubuntu:size=10:style=bold}${color1}IP: ${alignr}${font Ubuntu:size=10:style=normal}${color2}${addr wlp2s0}
 ${offset 180}${font Ubuntu:size=10:style=bold}${color1}Public IP: ${alignr}${font Ubuntu:size=10:style=normal}${color2}${curl http://api.ipify.org 300}
-${offset 145}${upspeedgraph wlan0 25,200 4B1B0C FF5C2B 1280KiB -l}
-${offset 145}${color1}${font Ubuntu:size=10:style=bold}Up: ${alignr}${font Ubuntu:size=10:style=normal}${color3}${upspeed wlan0} / ${totalup wlan0}
-${offset 145}${downspeedgraph wlan0 25,200 324D23 77B753 1280KiB -l}
-${offset 145}${color1}${font Ubuntu:size=10:style=bold}Down: ${alignr}${font Ubuntu:size=10:style=normal}${color3}${downspeed wlan0} / ${totaldown wlan0}
+${offset 145}${upspeedgraph wlp2s0 25,200 4B1B0C FF5C2B 1280KiB -l}
+${offset 145}${color1}${font Ubuntu:size=10:style=bold}Up: ${alignr}${font Ubuntu:size=10:style=normal}${color3}${upspeed wlp2s0} / ${totalup wlp2s0}
+${offset 145}${downspeedgraph wlp2s0 25,200 324D23 77B753 1280KiB -l}
+${offset 145}${color1}${font Ubuntu:size=10:style=bold}Down: ${alignr}${font Ubuntu:size=10:style=normal}${color3}${downspeed wlp2s0} / ${totaldown wlp2s0}
 ${else}\
 
 ${offset 180}${font Ubuntu:size=10:style=bold}${color1}Disconnected
-${offset 180}${font Ubuntu:size=10:style=normal}${color3}(enp1s0f1 and wlan0 have no IP)
+${offset 180}${font Ubuntu:size=10:style=normal}${color3}(enp1s0f1 and wlp2s0 have no IP)
 ${offset 145}${upspeedgraph enp1s0f1 25,200 4B1B0C FF5C2B 1280KiB -l}
 ${offset 145}${color1}${font Ubuntu:size=10:style=bold}Up: ${alignr}${font Ubuntu:size=10:style=normal}${color3}NA
 ${offset 145}${downspeedgraph enp1s0f1 25,200 324D23 77B753 1280KiB -l}
