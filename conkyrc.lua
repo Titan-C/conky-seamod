@@ -122,7 +122,7 @@ ${voffset -38}
 ${if_match "${addr enp1s0f1}" != "No Address"}\
 ${offset 180}${font Ubuntu:size=10:style=bold}${color1}Wired
 ${offset 180}${font Ubuntu:size=10:style=bold}${color1}IP: ${alignr}${font Ubuntu:size=10:style=normal}${color2}${addr enp1s0f1}
-${offset 180}${font Ubuntu:size=10:style=bold}${color1}Public IP: ${alignr}${font Ubuntu:size=10:style=normal}${color2}${curl http://api.ipify.org 300}
+${offset 180}${font Ubuntu:size=10:style=bold}${color1}Public IP: ${alignr}${font Ubuntu:size=10:style=normal}${color2}${curl https://api.ipify.org 300}
 ${offset 105}${font Ubuntu:size=11:style=bold}${color5}NET
 
 ${voffset -58}
@@ -134,7 +134,7 @@ ${else}\
 ${if_match "${addr wlp2s0}" != "No Address"}\
 ${offset 180}${font Ubuntu:size=10:style=bold}${color1}Wifi: ${alignr}${font Ubuntu:size=10:style=normal}${color2}${wireless_essid} (${wireless_bitrate wlp2s0})
 ${offset 180}${font Ubuntu:size=10:style=bold}${color1}IP: ${alignr}${font Ubuntu:size=10:style=normal}${color2}${addr wlp2s0}
-${offset 180}${font Ubuntu:size=10:style=bold}${color1}Public IP: ${alignr}${font Ubuntu:size=10:style=normal}${color2}${curl http://api.ipify.org 300}
+${offset 180}${font Ubuntu:size=10:style=bold}${color1}Public IP: ${alignr}${font Ubuntu:size=10:style=normal}${color2}${curl https://api.ipify.org 300}
 ${offset 145}${upspeedgraph wlp2s0 25,200 4B1B0C FF5C2B 1280KiB -l}
 ${offset 145}${color1}${font Ubuntu:size=10:style=bold}Up: ${alignr}${font Ubuntu:size=10:style=normal}${color3}${upspeed wlp2s0} / ${totalup wlp2s0}
 ${offset 145}${downspeedgraph wlp2s0 25,200 324D23 77B753 1280KiB -l}
