@@ -63,7 +63,7 @@ conky.config = {
     color5 = '#77B753',
 
     -- Loading lua script for drawning rings
-    lua_load = '~/seamod/seamod_rings.lua',
+    lua_load = '~/dev/conky-seamod/seamod_rings.lua',
     lua_draw_hook_post = 'main',
 
 };
