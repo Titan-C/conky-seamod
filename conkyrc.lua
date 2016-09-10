@@ -23,7 +23,7 @@ conky.config = {
     own_window_class = 'conky-semi',
     --own_window_type = 'override',
     --own_window_type = 'desktop',
-    own_window_type = 'dock',
+    own_window_type = 'normal',
     own_window_hints = 'undecorated,sticky,skip_taskbar,skip_pager,below',
 
     own_window_colour = '#000000',
