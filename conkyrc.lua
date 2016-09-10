@@ -69,16 +69,19 @@ conky.config = {
 };
 
 conky.text = [[
+${font Ubuntu:size=11:style=bold}${color4}SYSTEM ${color1} $nodename ${alignr}  $sysname $kernel
+${font Ubuntu:size=11:style=normal}${color1}${alignr}Uptime:${tab} ${color3}$uptime
+${offset 200}${color1}${font Ubuntu:size=10:style=bold}CPU Temp: ${alignr}${font Ubuntu:size=10:style=normal}${color2}${execi 20 sensors | grep "high" | cut -d "+" -f2 | cut -c1-4 | head -n 1} °C
+# ${offset 180}${color1}${font Ubuntu:size=10:style=bold}Fan: ${alignr}${font Ubuntu:size=10:style=normal}${color2}${hwmon 2 fan 1} RPM
+
 # Showing CPU Graph with TOP 5
 
-${offset 180}${color1}${font Ubuntu:size=10:style=bold}Temp: ${alignr}${font Ubuntu:size=10:style=normal}${color2}${execi 20 sensors | grep "high" | cut -d "+" -f2 | cut -c1-4 | head -n 1} °C
-# ${offset 180}${color1}${font Ubuntu:size=10:style=bold}Fan: ${alignr}${font Ubuntu:size=10:style=normal}${color2}${hwmon 2 fan 1} RPM
-${offset 145}${cpugraph cpu0 30,200 666666 666666}
-${voffset -32}
 ${offset 91}${font Ubuntu:size=11:style=bold}${color5}PROC
-${voffset -42}
+${voffset -60}
+${offset 145}${cpugraph cpu0 30,200 666666 666666}
 
 # Showing TOP 5 CPU-consumers
+${voffset -40}
 ${offset 110}${font Ubuntu:size=11:style=normal}${color4}${top name 1}${alignr}${top cpu 1}%
 ${offset 110}${font Ubuntu:size=11:style=normal}${color1}${top name 2}${alignr}${top cpu 2}%
 ${offset 110}${font Ubuntu:size=10:style=normal}${color2}${top name 3}${alignr}${top cpu 3}%
@@ -86,13 +89,11 @@ ${offset 110}${font Ubuntu:size=10:style=normal}${color3}${top name 4}${alignr}$
 ${offset 110}${font Ubuntu:size=10:style=normal}${color3}${top name 5}${alignr}${top cpu 5}%
 
 
-${voffset -42}
 #Showing memory Graph with TOP 5
+${voffset -25}
 ${offset 180}${color1}${font Ubuntu:size=10:style=bold}Availble: ${alignr}${font Ubuntu:size=10:style=normal}${color2}${memeasyfree}
 ${offset 180}${color1}${font Ubuntu:size=10:style=bold}Cache: ${alignr}${font Ubuntu:size=10:style=normal}${color2}${cached}
 ${offset 180}${color1}${font Ubuntu:size=10:style=bold}Buffer: ${alignr}${font Ubuntu:size=10:style=normal}${color2}${buffers}
-${offset 145}${memgraph 30,200 666666 666666}
-${voffset -52}
 ${offset 100}${font Ubuntu:size=11:style=bold}${color5}MEM
 ${offset 110}${font Ubuntu:size=12:style=normal}${color4}${top_mem name 1}${alignr}${top_mem mem_res 1}
 ${offset 110}${font Ubuntu:size=11:style=normal}${color1}${top_mem name 2}${alignr}${top_mem mem_res 2}
@@ -155,8 +156,4 @@ ${endif}\
 ${offset 15}${font Ubuntu:size=11:style=normal}${color1}Entropy:${tab}${color3}${entropy_bar 5,140}  ${color3}${entropy_perc}% (${entropy_avail}/${entropy_poolsize})
 
 ${offset 15}${font Ubuntu:size=11:style=normal}${color1}Battery:${tab}${color3}${battery_bar 5,140 BAT1}  ${if_match ${battery_percent BAT1} <= 33}${color4}${else}${color3}${endif}${battery_short BAT1}${if_match ${battery_percent BAT1} != 100} (${battery_time BAT1})${endif}
-
-
-${offset 15}${font Ubuntu:size=11:style=normal}${color1}Uptime:${tab}${tab}${color3}$uptime
-
 ]];
