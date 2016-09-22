@@ -27,7 +27,7 @@ gauge = {
 -- CPU rings
 {
     name='cpu',                    arg='cpu1',                  max_value=100,
-    x=70,                          y=90,
+    x=70,                          y=100,
     graph_radius=60,
     graph_thickness=5,
     graph_start_angle=180,
@@ -48,7 +48,7 @@ gauge = {
 },
 {
     name='cpu',                    arg='cpu2',                  max_value=100,
-    x=70,                          y=90,
+    x=70,                          y=100,
     graph_radius=53,
     graph_thickness=5,
     graph_start_angle=180,
@@ -69,7 +69,7 @@ gauge = {
 },
 {
     name='cpu',                    arg='cpu3',                  max_value=100,
-    x=70,                          y=90,
+    x=70,                          y=100,
     graph_radius=46,
     graph_thickness=5,
     graph_start_angle=180,
@@ -90,7 +90,7 @@ gauge = {
 },
 {
     name='cpu',                    arg='cpu4',                  max_value=100,
-    x=70,                          y=90,
+    x=70,                          y=100,
     graph_radius=39,
     graph_thickness=5,
     graph_start_angle=180,
@@ -112,7 +112,7 @@ gauge = {
 --[[
 {
     name='cpu',                    arg='cpu5',                  max_value=100,
-    x=70,                          y=90,
+    x=70,                          y=100,
     graph_radius=32,
     graph_thickness=5,
     graph_start_angle=180,
@@ -133,7 +133,7 @@ gauge = {
 },
 {
     name='cpu',                    arg='cpu6',                  max_value=100,
-    x=70,                          y=90,
+    x=70,                          y=100,
     graph_radius=25,
     graph_thickness=5,
     graph_start_angle=180,
@@ -154,7 +154,7 @@ gauge = {
 },
 {
     name='cpu',                    arg='cpu7',                  max_value=100,
-    x=70,                          y=90,
+    x=70,                          y=100,
     graph_radius=18,
     graph_thickness=5,
     graph_start_angle=180,
@@ -175,7 +175,7 @@ gauge = {
 },
 {
     name='cpu',                    arg='cpu8',                  max_value=100,
-    x=70,                          y=90,
+    x=70,                          y=100,
     graph_radius=11,
     graph_thickness=5,
     graph_start_angle=180,
@@ -198,7 +198,7 @@ gauge = {
 -- Memory rings
 {
     name='memperc',                arg='',                      max_value=100,
-    x=70,                          y=290,
+    x=70,                          y=310,
     graph_radius=60,
     graph_thickness=10,
     graph_start_angle=180,
@@ -219,7 +219,7 @@ gauge = {
 },
 {
     name='swapperc',               arg='',                      max_value=100,
-    x=70,                          y=290,
+    x=70,                          y=310,
     graph_radius=45,
     graph_thickness=10,
     graph_start_angle=180,
@@ -241,7 +241,7 @@ gauge = {
 -- Storage rings
 {
     name='fs_used_perc',           arg='/home',                 max_value=100,
-    x=70,                          y=485,
+    x=70,                          y=520,
     graph_radius=60,
     graph_thickness=8,
     graph_start_angle=180,
@@ -263,7 +263,7 @@ gauge = {
 {
     name='fs_used_perc',           arg='/media/oscar',
     max_value=100,
-    x=70,                          y=485,
+    x=70,                          y=520,
     graph_radius=48,
     graph_thickness=8,
     graph_start_angle=180,
@@ -284,7 +284,7 @@ gauge = {
 },
 {
     name='fs_used_perc',           arg='/tmp',                  max_value=100,
-    x=70,                          y=485,
+    x=70,                          y=520,
     graph_radius=36,
     graph_thickness=8,
     graph_start_angle=180,
@@ -308,7 +308,7 @@ gauge = {
     --conky_line='${if_up enp1s0f1}${downspeedf enp1s0f1}${else}${if_up wlp2s0}{downspeedf wlp2s0}${endif}${endif}',
     conky_line='${if_match "${addr enp1s0f1}" != "No Address"}${downspeedf enp1s0f1}${else}${if_match "${addr wlp2s0}" != "No Address"}${downspeedf wlp2s0}${endif}${endif}',
     name='downspeedf',             arg='enp1s0f1',                  max_value=100,
-    x=70,                          y=682,
+    x=70,                          y=730,
     graph_radius=60,
     graph_thickness=8,
     graph_start_angle=180,
@@ -331,7 +331,7 @@ gauge = {
     --conky_line='${if_up enp1s0f1}${upspeedf enp1s0f1}${else}${if_up wlp2s0}${upspeedf wlp2s0}${endif}${endif}',
     conky_line='${if_match "${addr enp1s0f1}" != "No Address"}${upspeedf enp1s0f1}${else}${if_match "${addr wlp2s0}" != "No Address"}${upspeedf wlp2s0}${endif}${endif}',
     name='upspeedf',               arg='enp1s0f1',                  max_value=100,
-    x=70,                          y=682,
+    x=70,                          y=730,
     graph_radius=48,
     graph_thickness=8,
     graph_start_angle=180,
@@ -353,7 +353,7 @@ gauge = {
 {
     conky_line='${if_match "${addr wlp2s0}" != "No Address"}${wireless_link_qual_perc wlp2s0}${else}0${endif}',
     name='wireless_link_qual_perc', arg='wlp2s0',                max_value=100,
-    x=70,                          y=682,
+    x=70,                          y=730,
     graph_radius=30,
     graph_thickness=8,
     graph_start_angle=180,
