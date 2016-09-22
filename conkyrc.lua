@@ -47,7 +47,7 @@ conky.config = {
 
     override_utf8_locale = true,
     use_xft = true,
-    font = 'Ubuntu:size=11',
+    font = 'Ubuntu:size=10',
     xftalpha = 0.8,
     uppercase = false,
 
@@ -69,21 +69,23 @@ conky.config = {
 };
 
 conky.text = [[
-${font Ubuntu:size=11:style=bold}${color4}SYSTEM ${color1} $nodename ${alignr}  $sysname $kernel
-${font Ubuntu:size=11:style=normal}${color1}${alignr}Uptime:${tab} ${color3}$uptime
+${font Ubuntu:size=12:style=bold}${color4}SYSTEM ${color1} $nodename ${alignr}  $sysname
+${font Ubuntu:size=10:style=normal}${color1}${alignr} $kernel
+${font Ubuntu:size=10:style=normal}${color1}${alignr}Uptime:${tab} ${color3}$uptime
 ${offset 200}${color1}${font Ubuntu:size=10:style=bold}CPU Temp: ${alignr}${font Ubuntu:size=10:style=normal}${color2}${execi 20 sensors | grep "high" | cut -d "+" -f2 | cut -c1-4 | head -n 1} °C
 # ${offset 180}${color1}${font Ubuntu:size=10:style=bold}Fan: ${alignr}${font Ubuntu:size=10:style=normal}${color2}${hwmon 2 fan 1} RPM
 
 # Showing CPU Graph with TOP 5
 
+${voffset -40}
 ${offset 91}${font Ubuntu:size=11:style=bold}${color5}PROC
 ${voffset -60}
 ${offset 145}${cpugraph cpu0 30,200 666666 666666}
 
 # Showing TOP 5 CPU-consumers
-${voffset -40}
-${offset 110}${font Ubuntu:size=11:style=normal}${color4}${top name 1}${alignr}${top cpu 1}%
-${offset 110}${font Ubuntu:size=11:style=normal}${color1}${top name 2}${alignr}${top cpu 2}%
+${voffset -50}
+${offset 110}${font Ubuntu:size=10:style=normal}${color4}${top name 1}${alignr}${top cpu 1}%
+${offset 110}${font Ubuntu:size=10:style=normal}${color1}${top name 2}${alignr}${top cpu 2}%
 ${offset 110}${font Ubuntu:size=10:style=normal}${color2}${top name 3}${alignr}${top cpu 3}%
 ${offset 110}${font Ubuntu:size=10:style=normal}${color3}${top name 4}${alignr}${top cpu 4}%
 ${offset 110}${font Ubuntu:size=10:style=normal}${color3}${top name 5}${alignr}${top cpu 5}%
@@ -94,9 +96,9 @@ ${voffset -25}
 ${offset 180}${color1}${font Ubuntu:size=10:style=bold}Availble: ${alignr}${font Ubuntu:size=10:style=normal}${color2}${memeasyfree}
 ${offset 180}${color1}${font Ubuntu:size=10:style=bold}Cache: ${alignr}${font Ubuntu:size=10:style=normal}${color2}${cached}
 ${offset 180}${color1}${font Ubuntu:size=10:style=bold}Buffer: ${alignr}${font Ubuntu:size=10:style=normal}${color2}${buffers}
-${offset 100}${font Ubuntu:size=11:style=bold}${color5}MEM
-${offset 110}${font Ubuntu:size=12:style=normal}${color4}${top_mem name 1}${alignr}${top_mem mem_res 1}
-${offset 110}${font Ubuntu:size=11:style=normal}${color1}${top_mem name 2}${alignr}${top_mem mem_res 2}
+${offset 110}${font Ubuntu:size=11:style=bold}${color5}MEM
+${offset 110}${font Ubuntu:size=10:style=normal}${color4}${top_mem name 1}${alignr}${top_mem mem_res 1}
+${offset 110}${font Ubuntu:size=10:style=normal}${color1}${top_mem name 2}${alignr}${top_mem mem_res 2}
 ${offset 110}${font Ubuntu:size=10:style=normal}${color2}${top_mem name 3}${alignr}${top_mem mem_res 3}
 ${offset 110}${font Ubuntu:size=10:style=normal}${color3}${top_mem name 4}${alignr}${top_mem mem_res 4}
 ${offset 110}${font Ubuntu:size=10:style=normal}${color3}${top_mem name 5}${alignr}${top_mem mem_res 5}
@@ -110,8 +112,8 @@ ${offset 180}${color1}${font Ubuntu:size=10:style=bold}Write: ${alignr}${font Ub
 ${offset 145}${diskiograph 30,200 666666 666666}
 ${voffset -42}
 ${offset 85}${font Ubuntu:size=11:style=bold}${color5}STORE
-${offset 110}${font Ubuntu:size=12:style=normal}${color4}${top_mem name 1}${alignr}r:${top_io io_read 1}w:${top_io io_write 1}
-${offset 110}${font Ubuntu:size=11:style=normal}${color1}${top_mem name 2}${alignr}r:${top_io io_read 2}w:${top_io io_write 2}
+${offset 110}${font Ubuntu:size=10:style=normal}${color4}${top_mem name 1}${alignr}r:${top_io io_read 1}w:${top_io io_write 1}
+${offset 110}${font Ubuntu:size=10:style=normal}${color1}${top_mem name 2}${alignr}r:${top_io io_read 2}w:${top_io io_write 2}
 ${offset 110}${font Ubuntu:size=10:style=normal}${color2}${top_mem name 3}${alignr}r:${top_io io_read 3}w:${top_io io_write 3}
 ${offset 110}${font Ubuntu:size=10:style=normal}${color2}${top_mem name 4}${alignr}r:${top_io io_read 4}w:${top_io io_write 4}
 ${offset 110}${font Ubuntu:size=10:style=normal}${color2}${top_mem name 5}${alignr}r:${top_io io_read 5}w:${top_io io_write 5}
@@ -124,7 +126,7 @@ ${if_match "${addr enp1s0f1}" != "No Address"}\
 ${offset 180}${font Ubuntu:size=10:style=bold}${color1}Wired
 ${offset 180}${font Ubuntu:size=10:style=bold}${color1}IP: ${alignr}${font Ubuntu:size=10:style=normal}${color2}${addr enp1s0f1}
 ${offset 180}${font Ubuntu:size=10:style=bold}${color1}Public IP: ${alignr}${font Ubuntu:size=10:style=normal}${color2}${curl https://api.ipify.org 300}
-${offset 105}${font Ubuntu:size=11:style=bold}${color5}NET
+${offset 105}${font Ubuntu:size=10:style=bold}${color5}NET
 
 ${voffset -58}
 ${offset 145}${upspeedgraph enp1s0f1 25,200 4B1B0C FF5C2B 1280KiB -l}
@@ -153,7 +155,7 @@ ${endif}\
 
 #### Modifications below HERE wont cause alignment problems with the gauges/rings ####
 # Extra info
-${offset 15}${font Ubuntu:size=11:style=normal}${color1}Entropy:${tab}${color3}${entropy_bar 5,140}  ${color3}${entropy_perc}% (${entropy_avail}/${entropy_poolsize})
+${offset 15}${font Ubuntu:size=10:style=normal}${color1}Entropy:${tab}${color3}${entropy_bar 5,140}  ${color3}${entropy_perc}% (${entropy_avail}/${entropy_poolsize})
 
-${offset 15}${font Ubuntu:size=11:style=normal}${color1}Battery:${tab}${color3}${battery_bar 5,140 BAT1}  ${if_match ${battery_percent BAT1} <= 33}${color4}${else}${color3}${endif}${battery_short BAT1}${if_match ${battery_percent BAT1} != 100} (${battery_time BAT1})${endif}
+${offset 15}${font Ubuntu:size=10:style=normal}${color1}Battery:${tab}${color3}${battery_bar 5,140 BAT1}  ${if_match ${battery_percent BAT1} <= 33}${color4}${else}${color3}${endif}${battery_short BAT1}${if_match ${battery_percent BAT1} != 100} (${battery_time BAT1})${endif}
 ]];
